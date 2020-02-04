@@ -1,0 +1,181 @@
+7.3811 	WARNING 	User requested fullscreen with size [1024  768], but screen is actually [1440, 900]. Using actual size
+8.9267 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, args=UNKNOWN, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', color=array([0., 0., 0.]), colorSpace='rgb', fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x131e4ed68>, gamma=None, gammaErrorPolicy='raise', kwargs=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x131bb9c50>, multiSample=False, name='window1', numSamples=2, pos=[360.0, 225.0], screen=0, size=array([2880, 1800]), stereo=False, units='height', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+8.9268 	EXP 	window1: recordFrameIntervals = False
+9.0927 	EXP 	window1: recordFrameIntervals = True
+9.2758 	EXP 	window1: recordFrameIntervals = False
+10.8134 	EXP 	Created __instructions = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='__instructions', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text=str(...), units='height', win=Window(...), wrapWidth=1)
+10.8729 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='default text', units='height', win=Window(...), wrapWidth=1)
+10.9288 	EXP 	Created _bye_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='_bye_text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='Instructions ...', units='height', win=Window(...), wrapWidth=1)
+11.0104 	EXP 	__instructions: autoDraw = True
+13.4659 	EXP 	Imported csvs/noise_conditions.csv as conditions, 4 conditions, 1 params
+13.4662 	EXP 	Created sequence: random, trialTypes=4, nReps=1, seed=None
+13.4665 	EXP 	New trial (rep=0, index=0): OrderedDict([('condition', 'condition 4')])
+13.4855 	DATA 	Keypress: space
+13.5095 	EXP 	__instructions: autoDraw = False
+13.5095 	EXP 	text: text = 'condition 4'
+13.5095 	EXP 	text: autoDraw = True
+16.0451 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.0453 	EXP 	New trial (rep=0, index=0): None
+16.0455 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.0457 	EXP 	New trial (rep=0, index=0): None
+16.0461 	EXP 	New trial (rep=1, index=0): None
+16.0465 	EXP 	New trial (rep=2, index=0): None
+16.0469 	EXP 	New trial (rep=3, index=0): None
+16.0472 	EXP 	New trial (rep=4, index=0): None
+16.0476 	EXP 	New trial (rep=1, index=0): None
+16.0479 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.0481 	EXP 	New trial (rep=0, index=0): None
+16.0484 	EXP 	New trial (rep=1, index=0): None
+16.0487 	EXP 	New trial (rep=2, index=0): None
+16.0490 	EXP 	New trial (rep=3, index=0): None
+16.0493 	EXP 	New trial (rep=4, index=0): None
+16.0497 	EXP 	New trial (rep=2, index=0): None
+16.0499 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.0501 	EXP 	New trial (rep=0, index=0): None
+16.0504 	EXP 	New trial (rep=1, index=0): None
+16.0507 	EXP 	New trial (rep=2, index=0): None
+16.0510 	EXP 	New trial (rep=3, index=0): None
+16.0513 	EXP 	New trial (rep=4, index=0): None
+16.0517 	EXP 	New trial (rep=3, index=0): None
+16.0519 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.0521 	EXP 	New trial (rep=0, index=0): None
+16.0524 	EXP 	New trial (rep=1, index=0): None
+16.0527 	EXP 	New trial (rep=2, index=0): None
+16.0530 	EXP 	New trial (rep=3, index=0): None
+16.0534 	EXP 	New trial (rep=4, index=0): None
+16.0539 	EXP 	New trial (rep=4, index=0): None
+16.0542 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.0544 	EXP 	New trial (rep=0, index=0): None
+16.0547 	EXP 	New trial (rep=1, index=0): None
+16.0551 	EXP 	New trial (rep=2, index=0): None
+16.0555 	EXP 	New trial (rep=3, index=0): None
+16.0558 	EXP 	New trial (rep=4, index=0): None
+16.0562 	EXP 	New trial (rep=0, index=1): OrderedDict([('condition', 'condition 2')])
+16.0650 	DATA 	Keypress: space
+16.0757 	EXP 	text: autoDraw = False
+16.0757 	EXP 	text: text = 'condition 2'
+16.0757 	EXP 	text: autoDraw = True
+16.5438 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.5441 	EXP 	New trial (rep=0, index=0): None
+16.5443 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.5446 	EXP 	New trial (rep=0, index=0): None
+16.5449 	EXP 	New trial (rep=1, index=0): None
+16.5453 	EXP 	New trial (rep=2, index=0): None
+16.5457 	EXP 	New trial (rep=3, index=0): None
+16.5460 	EXP 	New trial (rep=4, index=0): None
+16.5464 	EXP 	New trial (rep=1, index=0): None
+16.5467 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.5469 	EXP 	New trial (rep=0, index=0): None
+16.5473 	EXP 	New trial (rep=1, index=0): None
+16.5476 	EXP 	New trial (rep=2, index=0): None
+16.5479 	EXP 	New trial (rep=3, index=0): None
+16.5483 	EXP 	New trial (rep=4, index=0): None
+16.5487 	EXP 	New trial (rep=2, index=0): None
+16.5490 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.5492 	EXP 	New trial (rep=0, index=0): None
+16.5495 	EXP 	New trial (rep=1, index=0): None
+16.5498 	EXP 	New trial (rep=2, index=0): None
+16.5501 	EXP 	New trial (rep=3, index=0): None
+16.5504 	EXP 	New trial (rep=4, index=0): None
+16.5508 	EXP 	New trial (rep=3, index=0): None
+16.5510 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.5512 	EXP 	New trial (rep=0, index=0): None
+16.5520 	EXP 	New trial (rep=1, index=0): None
+16.5526 	EXP 	New trial (rep=2, index=0): None
+16.5532 	EXP 	New trial (rep=3, index=0): None
+16.5537 	EXP 	New trial (rep=4, index=0): None
+16.5543 	EXP 	New trial (rep=4, index=0): None
+16.5546 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.5548 	EXP 	New trial (rep=0, index=0): None
+16.5552 	EXP 	New trial (rep=1, index=0): None
+16.5555 	EXP 	New trial (rep=2, index=0): None
+16.5559 	EXP 	New trial (rep=3, index=0): None
+16.5562 	EXP 	New trial (rep=4, index=0): None
+16.5566 	EXP 	New trial (rep=0, index=2): OrderedDict([('condition', 'condition 3')])
+16.5657 	DATA 	Keypress: space
+16.5767 	EXP 	text: autoDraw = False
+16.5767 	EXP 	text: text = 'condition 3'
+16.5767 	EXP 	text: autoDraw = True
+16.8947 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.8949 	EXP 	New trial (rep=0, index=0): None
+16.8952 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.8954 	EXP 	New trial (rep=0, index=0): None
+16.8958 	EXP 	New trial (rep=1, index=0): None
+16.8961 	EXP 	New trial (rep=2, index=0): None
+16.8965 	EXP 	New trial (rep=3, index=0): None
+16.8968 	EXP 	New trial (rep=4, index=0): None
+16.8972 	EXP 	New trial (rep=1, index=0): None
+16.8975 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.8977 	EXP 	New trial (rep=0, index=0): None
+16.8981 	EXP 	New trial (rep=1, index=0): None
+16.8984 	EXP 	New trial (rep=2, index=0): None
+16.8988 	EXP 	New trial (rep=3, index=0): None
+16.8991 	EXP 	New trial (rep=4, index=0): None
+16.8995 	EXP 	New trial (rep=2, index=0): None
+16.8998 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.9000 	EXP 	New trial (rep=0, index=0): None
+16.9004 	EXP 	New trial (rep=1, index=0): None
+16.9007 	EXP 	New trial (rep=2, index=0): None
+16.9011 	EXP 	New trial (rep=3, index=0): None
+16.9015 	EXP 	New trial (rep=4, index=0): None
+16.9018 	EXP 	New trial (rep=3, index=0): None
+16.9022 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.9024 	EXP 	New trial (rep=0, index=0): None
+16.9029 	EXP 	New trial (rep=1, index=0): None
+16.9033 	EXP 	New trial (rep=2, index=0): None
+16.9038 	EXP 	New trial (rep=3, index=0): None
+16.9041 	EXP 	New trial (rep=4, index=0): None
+16.9045 	EXP 	New trial (rep=4, index=0): None
+16.9047 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+16.9049 	EXP 	New trial (rep=0, index=0): None
+16.9052 	EXP 	New trial (rep=1, index=0): None
+16.9055 	EXP 	New trial (rep=2, index=0): None
+16.9058 	EXP 	New trial (rep=3, index=0): None
+16.9061 	EXP 	New trial (rep=4, index=0): None
+16.9065 	EXP 	New trial (rep=0, index=3): OrderedDict([('condition', 'condition 1')])
+16.9151 	DATA 	Keypress: space
+16.9261 	EXP 	text: autoDraw = False
+16.9261 	EXP 	text: text = 'condition 1'
+16.9261 	EXP 	text: autoDraw = True
+17.2436 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+17.2438 	EXP 	New trial (rep=0, index=0): None
+17.2440 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+17.2442 	EXP 	New trial (rep=0, index=0): None
+17.2447 	EXP 	New trial (rep=1, index=0): None
+17.2450 	EXP 	New trial (rep=2, index=0): None
+17.2453 	EXP 	New trial (rep=3, index=0): None
+17.2457 	EXP 	New trial (rep=4, index=0): None
+17.2460 	EXP 	New trial (rep=1, index=0): None
+17.2463 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+17.2465 	EXP 	New trial (rep=0, index=0): None
+17.2468 	EXP 	New trial (rep=1, index=0): None
+17.2471 	EXP 	New trial (rep=2, index=0): None
+17.2475 	EXP 	New trial (rep=3, index=0): None
+17.2478 	EXP 	New trial (rep=4, index=0): None
+17.2482 	EXP 	New trial (rep=2, index=0): None
+17.2484 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+17.2486 	EXP 	New trial (rep=0, index=0): None
+17.2490 	EXP 	New trial (rep=1, index=0): None
+17.2494 	EXP 	New trial (rep=2, index=0): None
+17.2497 	EXP 	New trial (rep=3, index=0): None
+17.2500 	EXP 	New trial (rep=4, index=0): None
+17.2505 	EXP 	New trial (rep=3, index=0): None
+17.2507 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+17.2510 	EXP 	New trial (rep=0, index=0): None
+17.2514 	EXP 	New trial (rep=1, index=0): None
+17.2517 	EXP 	New trial (rep=2, index=0): None
+17.2520 	EXP 	New trial (rep=3, index=0): None
+17.2524 	EXP 	New trial (rep=4, index=0): None
+17.2529 	EXP 	New trial (rep=4, index=0): None
+17.2532 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+17.2534 	EXP 	New trial (rep=0, index=0): None
+17.2539 	EXP 	New trial (rep=1, index=0): None
+17.2542 	EXP 	New trial (rep=2, index=0): None
+17.2545 	EXP 	New trial (rep=3, index=0): None
+17.2548 	EXP 	New trial (rep=4, index=0): None
+17.2577 	DATA 	Keypress: space
+17.2759 	EXP 	text: autoDraw = False
+17.2759 	EXP 	_bye_text: autoDraw = True
+17.7448 	DATA 	Keypress: space
+17.7596 	EXP 	_bye_text: autoDraw = False
+18.0436 	EXP 	window1: mouseVisible = True
