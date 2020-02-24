@@ -12,17 +12,16 @@ class Timer:
         self.start_time = None
         self.end_time = None
 
-    def record_start_time(self, action_func):
+    def flip_and_record_start_time(self, action_func):
         action_func()
         self.win.timeOnFlip(self, 'start_time')
-        win.flip()
+        win.flip()  # flip triggers the start_time to be set
 
-    def record_end_time(self):
+    def flip_and_record_end_time(self):
         self.win.timeOnFlip(self, 'end_time')
-        win.flip()
+        win.flip()  # flip triggers the end_time to be set
 
-    @property
-    def start_and_end_time(self, reset=True):
+    def get_start_and_end_time(self, reset=True):
         assert self.start_time is not None and self.end_time is not None
         return self.start_time, self.end_time
 
@@ -30,7 +29,7 @@ class Timer:
         self.start_time, self.end_time = None, None
 
 # timer = Timer()
-# timer.record_start_time()
-# timer.record_end_time()
-# timer.start_and_end_time
+# timer.flip_and_record_start_time()
+# timer.flip_and_record_end_time()
+# timer.get_start_and_end_time()
 # timer.erase()
