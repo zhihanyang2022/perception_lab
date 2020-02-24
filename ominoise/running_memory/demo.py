@@ -28,6 +28,10 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+# my imports
+import time
+import keyboard as k
+
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
@@ -204,6 +208,25 @@ routineTimer.reset()
 
 # =====
 
+# utility functions
+
+# def init_timestamps(component):
+#     component.tStart = None
+#     component.tStop = None
+#     component.tStartRefresh = None
+#     component.tStopRefresh = None
+#     if hasattr(component, 'status'):
+#         component.status = NOT_STARTED
+
+class ComponentTimer():
+
+    def __init__(self):
+        self.tStartRefresh = None
+        self.tStopRefresh = None
+
+# initialize containers for used components
+used_components = []
+
 # level 1: loop through the noise conditions
 loop_noises = data.TrialHandler(nReps=1, method='random',
     extraInfo=expInfo, originPath=-1,
@@ -230,87 +253,88 @@ for thisNoise in loop_noises:
             trialList=data.importConditions('csvs/{}.csv'.format(wlist_index)),
             seed=None, name='loop_words')
 
+        recallTimer = ComponentTimer()
+
         for thisWord in loop_words:
             word = thisWord['word'] # initialize variable "word"
 
-            print(word)
+            show_condition_text.setText(word)  # show word on screen
 
+            show_conditionComponents = [show_condition_text]
+            show_condition_text.status = NOT_STARTED  # can't remove this, cause continueRoutine = False
+            # for thisComponent in show_conditionComponents: init_timestamps(thisComponent)
 
+            # reset timers
+            # t = 0
+            _timeToFirstFrame = win.getFutureFlipTime(clock="now")  # how far is the next frame flip in ms, all local flip clocks are used with frameTolerance
+            show_conditionClock.reset(-_timeToFirstFrame)  # so that when it is the next frame, clock is zero
+            frameN = -1
+            continueRoutine = True
 
+            routineTimer.reset(0.01000)  # conventional clock, each word gets displayed for 3 seconds
+            while continueRoutine and routineTimer.getTime() > 0:
 
-#     # ------Prepare to start Routine "show_condition"-------
-#     routineTimer.add(1.000000)
-#     # update component parameters for each repeat
-#     show_condition_text.setText(condition)
-#     # keep track of which components have finished
-#     show_conditionComponents = [show_condition_text]
-#     for thisComponent in show_conditionComponents:
-#         thisComponent.tStart = None
-#         thisComponent.tStop = None
-#         thisComponent.tStartRefresh = None
-#         thisComponent.tStopRefresh = None
-#         if hasattr(thisComponent, 'status'):
-#             thisComponent.status = NOT_STARTED
-#     # reset timers
-#     t = 0
-#     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-#     show_conditionClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-#     frameN = -1
-#     continueRoutine = True
-#
-#     # -------Run Routine "show_condition"-------
-#     while continueRoutine and routineTimer.getTime() > 0:
-#         # get current time
-#         t = show_conditionClock.getTime()
-#         tThisFlip = win.getFutureFlipTime(clock=show_conditionClock)
-#         tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-#         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-#         # update/draw components on each frame
-#
-#         # *show_condition_text* updates
-#         if show_condition_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-#             # keep track of start time/frame for later
-#             show_condition_text.frameNStart = frameN  # exact frame index
-#             show_condition_text.tStart = t  # local t and not account for scr refresh
-#             show_condition_text.tStartRefresh = tThisFlipGlobal  # on global time
-#             win.timeOnFlip(show_condition_text, 'tStartRefresh')  # time at next scr refresh
-#             show_condition_text.setAutoDraw(True)
-#         if show_condition_text.status == STARTED:
-#             # is it time to stop? (based on global clock, using actual start)
-#             if tThisFlipGlobal > show_condition_text.tStartRefresh + 1-frameTolerance:
-#                 # keep track of stop time/frame for later
-#                 show_condition_text.tStop = t  # not accounting for scr refresh
-#                 show_condition_text.frameNStop = frameN  # exact frame index
-#                 win.timeOnFlip(show_condition_text, 'tStopRefresh')  # time at next scr refresh
-#                 show_condition_text.setAutoDraw(False)
-#
-#         # check for quit (typically the Esc key)
-#         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-#             core.quit()
-#
-#         # check if all components have finished
-#         if not continueRoutine:  # a component has requested a forced-end of Routine
-#             break
-#         continueRoutine = False  # will revert to True if at least one component still running
-#         for thisComponent in show_conditionComponents:
-#             if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-#                 continueRoutine = True
-#                 break  # at least one component has not yet finished
-#
-#         # refresh the screen
-#         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-#             win.flip()
-#
-#     # -------Ending Routine "show_condition"-------
-#     for thisComponent in show_conditionComponents:
-#         if hasattr(thisComponent, "setAutoDraw"):
-#             thisComponent.setAutoDraw(False)
-#     trials.addData('show_condition_text.started', show_condition_text.tStartRefresh)
-#     trials.addData('show_condition_text.stopped', show_condition_text.tStopRefresh)
-#     thisExp.nextEntry()
-#
-# # completed 1 repeats of 'trials'
+                ### update timers
+                t = show_conditionClock.getTime()
+                tThisFlip = win.getFutureFlipTime(clock=show_conditionClock)
+                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+                frameN = frameN + 1  # number of completed frames
 
+                ### update/draw components on each frame
+
+                # *show_condition_text* updates
+                if show_condition_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    show_condition_text.setAutoDraw(True)
+                    show_condition_text.status = NOT_STARTED  # so that the timestamp attributes won't get updated again
+
+                ### check for quit (typically the Esc key)
+                if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                    core.quit()
+
+                ### check if all components have finished
+                if not continueRoutine:  # a component has requested a forced-end of Routine
+                    break
+
+                continueRoutine = False  # will revert to True if at least one component still running
+                for thisComponent in show_conditionComponents:
+                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                        continueRoutine = True
+                        break  # at least one component has not yet finished
+
+                ### refresh the screen (we've been predicting this for a while...)
+                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                    win.flip()
+
+            # -------Ending Routine "show_condition"-------
+            for thisComponent in show_conditionComponents:
+                if hasattr(thisComponent, "setAutoDraw"):
+                    thisComponent.setAutoDraw(False)
+            # trials.addData('show_condition_text.started', show_condition_text.tStartRefresh)
+            # trials.addData('show_condition_text.stopped', show_condition_text.tStopRefresh)
+            # thisExp.nextEntry()
+
+        is_first_frame = True
+        while True:
+            if defaultKeyboard.getKeys(keyList=["space"]):
+                win.timeOnFlip(recallTimer, 'tStopRefresh')
+                win.flip()
+                used_components.append(recallTimer)  # process the timestamps later
+                break
+            else:
+                if is_first_frame:
+                    win.timeOnFlip(recallTimer, 'tStartRefresh')
+                    # or recallTimer.tStartRefresh = win.getFutureFlipTime(clock=None)
+                    is_first_frame = False
+                show_condition_text.setText("****")
+                show_condition_text.setAutoDraw(True)
+                win.flip()
+
+# completed 1 repeats of 'trials'
+
+### save information from used components into a csv file
+
+for i, cmp in enumerate(used_components):
+    print('index {} | start: {} | stop: {}'.format(i+1, cmp.tStartRefresh, cmp.tStopRefresh))
 
 # Flip one final time so any remaining win.callOnFlip()
 # and win.timeOnFlip() tasks get executed before quitting
