@@ -1,36 +1,41 @@
-# instructions_text = visual.TextStim(...)
-# how to record the screen flip time for an upcoming event?
+class TimerFactory:
 
-#   prepare_func()
-#   win.timeOnFlip(timer, 'tStartRefresh')
-#   win.flip()
+    def __init__(self, win, keyboard, accum):
+        self.win, self.keyboard, self.accum = win, keyboard, accum
+
+    def get_new_timer(self):
+        return Timer(win=self.win, keyboard=self.keyboard, accum=self.accum)
 
 class Timer:
 
-    def __init__(self, win):
+    def __init__(self, win, keyboard, accum):
         self.win = win
-        self.start_time = None
-        self.end_time = None
+        self.keyboard = keyboard
+        self.accum = accum
+        self.times = {
+            'start_time':None,
+            'end_time':None
+        }
+        self.start_now = True
 
-    def record_start_time(self, action_func):
-        action_func()
-        self.win.timeOnFlip(self, 'start_time')
-        win.flip()
+    def record_start_time(self):
+        self.win.timeOnFlip(self.times, 'start_time')
 
     def record_end_time(self):
-        self.win.timeOnFlip(self, 'end_time')
-        win.flip()
+        self.win.timeOnFlip(self.times, 'end_time')
 
     @property
-    def start_and_end_time(self, reset=True):
-        assert self.start_time is not None and self.end_time is not None
-        return self.start_time, self.end_time
+    def end_now(self):
+        return self.keyboard.getKeys(keyList=['space'])
 
-    def erase(self):
-        self.start_time, self.end_time = None, None
+    def run_start_procedure(self, start_func):
+        self.record_start_time()
+        start_func()
+        self.win.flip()
+        self.start_now = False
 
-# timer = Timer()
-# timer.record_start_time()
-# timer.record_end_time()
-# timer.start_and_end_time
-# timer.erase()
+    def run_end_procedure(self, end_func):
+        self.record_end_time()
+        end_func()
+        self.win.flip()
+        self.accum.append(self)

@@ -31,6 +31,7 @@ from psychopy.hardware import keyboard
 # my imports
 import time
 import keyboard as k
+from ideal import Timer, TimerFactory
 
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
@@ -218,12 +219,6 @@ routineTimer.reset()
 #     if hasattr(component, 'status'):
 #         component.status = NOT_STARTED
 
-class ComponentTimer():
-
-    def __init__(self):
-        self.tStartRefresh = None
-        self.tStopRefresh = None
-
 # initialize containers for used components
 used_components = []
 
@@ -232,6 +227,8 @@ loop_noises = data.TrialHandler(nReps=1, method='random',
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions('csvs/noise_conditions.csv'),
     seed=None, name='loop_noises')
+
+timer_factory = TimerFactory(win=win, keyboard=defaultKeyboard, accum=used_components)
 
 for thisNoise in loop_noises:
     condition = thisNoise['condition']
@@ -252,8 +249,6 @@ for thisNoise in loop_noises:
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions('csvs/{}.csv'.format(wlist_index)),
             seed=None, name='loop_words')
-
-        recallTimer = ComponentTimer()
 
         for thisWord in loop_words:
             word = thisWord['word'] # initialize variable "word"
@@ -313,28 +308,28 @@ for thisNoise in loop_noises:
             # trials.addData('show_condition_text.stopped', show_condition_text.tStopRefresh)
             # thisExp.nextEntry()
 
-        is_first_frame = True
+        timer = timer_factory.get_new_timer()
+
+        def start_func():
+            show_condition_text.setText("****")
+            show_condition_text.setAutoDraw(True)
+
+        def end_func():
+            show_condition_text.setAutoDraw(False)
+
         while True:
-            if defaultKeyboard.getKeys(keyList=["space"]):
-                win.timeOnFlip(recallTimer, 'tStopRefresh')
-                win.flip()
-                used_components.append(recallTimer)  # process the timestamps later
-                break
-            else:
-                if is_first_frame:
-                    win.timeOnFlip(recallTimer, 'tStartRefresh')
-                    # or recallTimer.tStartRefresh = win.getFutureFlipTime(clock=None)
-                    is_first_frame = False
-                show_condition_text.setText("****")
-                show_condition_text.setAutoDraw(True)
-                win.flip()
+            if timer.start_now:
+                timer.run_start_procedure(start_func)
+            elif timer.end_now:
+                timer.run_end_procedure(end_func); break
+            else: pass
 
 # completed 1 repeats of 'trials'
 
 ### save information from used components into a csv file
 
 for i, cmp in enumerate(used_components):
-    print('index {} | start: {} | stop: {}'.format(i+1, cmp.tStartRefresh, cmp.tStopRefresh))
+    print('index {} | start: {} | stop: {}'.format(i+1, cmp.times['start_time'], cmp.times['end_time']))
 
 # Flip one final time so any remaining win.callOnFlip()
 # and win.timeOnFlip() tasks get executed before quitting
