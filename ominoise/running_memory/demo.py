@@ -256,57 +256,27 @@ for thisNoise in loop_noises:
             show_condition_text.setText(word)  # show word on screen
 
             show_conditionComponents = [show_condition_text]
-            show_condition_text.status = NOT_STARTED  # can't remove this, cause continueRoutine = False
-            # for thisComponent in show_conditionComponents: init_timestamps(thisComponent)
 
             # reset timers
             # t = 0
             _timeToFirstFrame = win.getFutureFlipTime(clock="now")  # how far is the next frame flip in ms, all local flip clocks are used with frameTolerance
-            show_conditionClock.reset(-_timeToFirstFrame)  # so that when it is the next frame, clock is zero
-            frameN = -1
-            continueRoutine = True
+            show_conditionClock.reset(-_timeToFirstFrame)  # so that when it is the next frame, clock is approximately zero
 
-            routineTimer.reset(0.01000)  # conventional clock, each word gets displayed for 3 seconds
-            while continueRoutine and routineTimer.getTime() > 0:
+            routineTimer.reset(0.03000)
+            while routineTimer.getTime() > 0:
 
-                ### update timers
-                t = show_conditionClock.getTime()
                 tThisFlip = win.getFutureFlipTime(clock=show_conditionClock)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames
 
-                ### update/draw components on each frame
-
-                # *show_condition_text* updates
-                if show_condition_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                if tThisFlip >= 0.0-frameTolerance:
                     show_condition_text.setAutoDraw(True)
-                    show_condition_text.status = NOT_STARTED  # so that the timestamp attributes won't get updated again
-
-                ### check for quit (typically the Esc key)
-                if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                    core.quit()
-
-                ### check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    break
-
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in show_conditionComponents:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-
-                ### refresh the screen (we've been predicting this for a while...)
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                     win.flip()
 
-            # -------Ending Routine "show_condition"-------
+                if defaultKeyboard.getKeys(keyList=["escape"]):
+                    core.quit()
+
             for thisComponent in show_conditionComponents:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
-            # trials.addData('show_condition_text.started', show_condition_text.tStartRefresh)
-            # trials.addData('show_condition_text.stopped', show_condition_text.tStopRefresh)
-            # thisExp.nextEntry()
 
         timer = timer_factory.get_new_timer()
 
@@ -322,7 +292,10 @@ for thisNoise in loop_noises:
                 timer.run_start_procedure(start_func)
             elif timer.end_now:
                 timer.run_end_procedure(end_func); break
-            else: pass
+            elif timer.quit_now:
+                core.quit()
+            else:
+                timer.win.flip()
 
 # completed 1 repeats of 'trials'
 

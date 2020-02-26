@@ -28,6 +28,10 @@ class Timer:
     def end_now(self):
         return self.keyboard.getKeys(keyList=['space'])
 
+    @property
+    def quit_now(self):
+        return self.keyboard.getKeys(keyList=['escape'])
+
     def run_start_procedure(self, start_func):
         self.record_start_time()
         start_func()
