@@ -1,0 +1,76 @@
+
+<style>
+  .center-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+  }
+</style>
+
+<div class=center-screen>
+<h1 id="centraltext" style="font-size: 100px">Ready....</h1>
+</div>
+
+<script>
+
+/* countdown timer before the experiment actually starts */
+
+var countDownDuration = 5;
+var wordIndex = 0;
+
+let words = [
+  'Restaurant',
+  'Basketball',
+  'Apple',
+  'Exam',
+  'Awesome',
+  'Dragon',
+  'Watermelon',
+  'Pentagon',
+  'Skyscraper',
+  'Destination'
+]
+
+var x = setInterval(function() {
+  if (countDownDuration == 0) {
+      document.getElementById("centraltext").innerHTML = "Start!";
+      countDownDuration -= 1;
+      /* don't quit here because we want "Start!" the show for 1 second */
+  } else if (countDownDuration == -1) {
+      /* quit here */
+      clearInterval(x);
+      showWords();
+  } else {
+    document.getElementById("centraltext").innerHTML = countDownDuration;
+    countDownDuration -= 1;
+  }
+}, 1000);
+
+function showWords() {
+
+  /* setInterval displays the first word 2 seconds after it is called */
+  /* these two lines are supposed to fix this issue */
+  document.getElementById("centraltext").innerHTML = words[wordIndex];
+  wordIndex += 1;
+
+  var y = setInterval(function() {
+        if (wordIndex == 10) {
+            record();
+            clearInterval(y);
+        } else {
+          document.getElementById("centraltext").innerHTML = words[wordIndex];
+          wordIndex += 1;
+        }
+   }, 2000);
+
+}
+
+function record() {
+    document.getElementById("centraltext").innerHTML = "Recording...";
+    // <input type="file" accept="audio/*;capture=microphone">
+}
+
+</script>
